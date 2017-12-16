@@ -1,0 +1,26 @@
+syntax="proto3";
+package red_envelope;
+
+import "message.proto";
+
+
+service RedEnvelope{
+    
+    //查询银行卡余额
+    rpc GetCardBalance(GetCardBalanceRequest) returns(GetCardBalanceReply){}
+  
+    //创建红包
+    rpc CreateRede(CreateRedeRequest)returns(CreateRedeReply){}
+
+    //创建红包领取记录
+    rpc CreateRecord(CreateRecordRequest) returns(CreateRecordReply){}
+
+    //根据用户id查询红包记录
+    rpc GetRecordByUID(GetRecordByUIDRequest) returns(GetRecordByUIDReply){}
+
+    //修改用户个人余额
+    rpc UpdateBalanceByUID(UpdateBalanceByUIDRequest)returns(UpdateBalanceByUIDReply){}
+
+    //查询指定用户的余额
+    rpc GetBalanceByUID(GetBalanceByUIDRequest)returns(GetBalanceByUIDReply){}
+}

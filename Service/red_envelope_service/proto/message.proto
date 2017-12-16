@@ -1,0 +1,75 @@
+syntax="proto3";
+package red_envelope;
+
+
+
+message ServerError{
+    int32 error_code=1;
+    string error_message=2;
+}
+message GetCardBalanceRequest{
+    int32 user_id=1;
+}
+message GetCardBalanceReply{
+    int32 id=1;
+    int32 user_id=2;
+    int32 money=3;
+}
+
+
+
+
+message CreateRedeRequest{
+    int32 user_id=1;
+    string secret_code=2;
+    int32 amount=3;
+    int32 count=4;    
+}
+message CreateRedeReply{
+    int32 id=1;
+    int32 user_id=2;
+    string secret_code=3;
+    int32 amount=4;
+    int32 count=5;
+    int64 expire_time=6;
+    int64 gmt_create=7; 
+     ServerError error=8;   
+}
+
+message CreateRecordRequest{
+    int32 user_id=1;
+    int32 rede_id=2;//红包id
+    int32 amount=3;    
+}
+message CreateRecordReply{
+    bool success=1;
+    ServerError error=2;
+}
+
+message RecordData{
+    int32 rede_id=1;
+    int32 amount=2;
+    int64 time=3;
+}
+message GetRecordByUIDRequest{
+    int32 user_id=1;
+}
+message GetRecordByUIDReply{
+    repeated RecordData data=1;
+}
+message UpdateBalanceByUIDRequest{
+    int32 user_id=1;
+    int32 amount=2;
+}
+message UpdateBalanceByUIDReply{
+    bool success=1;
+    ServerError error=2;
+}
+
+message GetBalanceByUIDRequest{
+     int32 user_id=1;
+}
+message  GetBalanceByUIDReply{
+    int32 user_id=1;
+    int32 balance=2;
+}
