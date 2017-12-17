@@ -14,8 +14,13 @@ type Config struct {
 	Debug               bool          `json:"debug"`
 	TracingTransportURL string        `json:"tracing_transport_url"`
 	Microservice        *Microservice `json:"microservice"`
+	Redis               *RedisConfig  `json:"redis_host"`
 	Listen              string        `json:"listen"`
 	DefaultToken        string        `json:"default_token"`
+}
+type RedisConfig struct {
+	Addr string `json:"addr"`
+	PWD  string `json:"pwd"`
 }
 
 //Microservice 微服务配置类

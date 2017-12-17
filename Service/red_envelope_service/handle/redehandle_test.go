@@ -18,9 +18,9 @@ func init() {
 	config.RegisterConfig()
 	server = new(Server)
 }
-func TestCreateClass(t *testing.T) {
+func TestGetCardBalance(t *testing.T) {
 	reply, err := server.GetCardBalance(context.Background(), &pb.GetCardBalanceRequest{
-		UserId: 333,
+		UserId: 11223344,
 	})
 	t.Logf("%v,%v", reply, err)
 }

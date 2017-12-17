@@ -10,4 +10,7 @@ type LogicError struct {
 	Err          error
 }
 
-func (e *LogicError) Error() string { return e.SeriviceName + "  " + e.Op + " : " + e.Err.Error() }
+func (e *LogicError) Error() string {
+	return e.SeriviceName + "  " + e.Op + " : " + e.Err.Error()
+
+}

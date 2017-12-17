@@ -13,7 +13,6 @@ import (
 	"net/http"
 
 	"github.com/lufred/red_envelope/Service/api_service/config"
-	extopentracing "github.com/lufred/red_envelope/Service/api_service/core/extension/opentracing"
 	"github.com/lufred/red_envelope/Service/api_service/microservice_client"
 	"github.com/lufred/red_envelope/Service/api_service/router"
 	"github.com/lufred/red_envelope/util/log"
@@ -24,7 +23,6 @@ func init() {
 	log.Debugged = config.ProConfig.Debug
 	flag.Parse()
 	config.RegisterConfig()
-	extopentracing.RegisterJadgerTracer()
 	microservice_client.RegisterMicroService()
 
 }
@@ -33,5 +31,4 @@ func main() {
 	if err := http.ListenAndServe(config.ProConfig.Listen, router.Router); err != nil {
 		log.Errorf("failed to server:%v", err)
 	}
-	defer extopentracing.Close()
 }

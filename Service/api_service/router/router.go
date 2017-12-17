@@ -11,7 +11,6 @@ func init() {
 	Router = chi.NewRouter()
 	Router.Use(middleware.CORSMiddleware)
 	Router.Use(middleware.OauthMiddleware)
-	Router.Use(middleware.OpentracingMiddleware)
 	routerInit()
 
 }

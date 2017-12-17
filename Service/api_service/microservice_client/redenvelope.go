@@ -1,9 +1,7 @@
 package microservice_client
 
 import (
-	"github.com/grpc-ecosystem/grpc-opentracing/go/otgrpc"
 	"github.com/lufred/red_envelope/Service/api_service/config"
-	extopentracing "github.com/lufred/red_envelope/Service/api_service/core/extension/opentracing"
 	redepb "github.com/lufred/red_envelope/Service/red_envelope_service/proto/pb"
 	"github.com/lufred/red_envelope/util/log"
 	"google.golang.org/grpc"
@@ -15,7 +13,6 @@ func registerRedEnvelopeClientConn() {
 	RedeClientConn, err = grpc.Dial(
 		config.ProConfig.Microservice.RedEnvelopeHost,
 		grpc.WithInsecure(),
-		grpc.WithUnaryInterceptor(otgrpc.OpenTracingClientInterceptor(extopentracing.Tracer)),
 	)
 	if err != nil {
 		log.Errorf("did not connect red_envelope service host: %v", err)

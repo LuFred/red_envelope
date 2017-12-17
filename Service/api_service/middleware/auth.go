@@ -6,8 +6,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/coocood/freecache"
+	"strconv"
 
+	"github.com/coocood/freecache"
 	"github.com/lufred/red_envelope/Service/api_service/config"
 	"golang.org/x/net/context"
 )
@@ -115,10 +116,15 @@ func (o *oauthAuth) simpleBasicFunc(token string, r *http.Request) (req *http.Re
 	} else {
 		//
 		//todo 通过token调用指定服务查询用户信息
-		//这里作为测试直接创建用户信息
-		oauthUser = &OauthUserEntity{}
-		userMetaString, _ := json.Marshal(*oauthUser)
-		cache.Set([]byte(token), userMetaString, expireTime)
+		//这里作为测试直接取token中_末尾作为用户
+		ts := strings.Split(token, "_")
+		if len(ts) == 2 {
+			oauthUser = &OauthUserEntity{}
+			_id, _ := strconv.Atoi(ts[1])
+			oauthUser.UserID = int32(_id)
+			userMetaString, _ := json.Marshal(*oauthUser)
+			cache.Set([]byte(token), userMetaString, expireTime)
+		}
 	}
 	if oauthUser.UserID > 0 {
 		v := CtxValues{
