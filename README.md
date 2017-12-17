@@ -19,7 +19,9 @@
 > redis通过加锁防止并发领取同一个红包溢出的情况  
 
 ## 项目目录结构
-### api_service: api服务
+### Service: 服务目录
+### util：相关涉及工具类
+### Service/api_service: api服务
 * config：配置文件目录  
 * core：api核心目录，包括自定义context，自定义handle函数  
 * handler：路由实际执行函数(即MVC中的C)  
@@ -32,7 +34,7 @@
 * swagger：api展示层 
   * api-json：api列表json文件  
 
-### red_envelope_service: 红包数据操作服务  
+### Service/red_envelope_service: 红包数据操作服务  
 * config：配置文件目录  
 * db: 数据库操作层  
   * core:数据库操作对象封装层
