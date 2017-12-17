@@ -1,0 +1,345 @@
+{
+    "apiVersion": "1.0.0",
+    "swaggerVersion": "1.2",
+    "basePath": "http://localhost:8077/api-json",
+    "resourcePath": "/rede",
+    "apis": [
+        {
+            "path": "/rede",
+            "description": "创建红包",
+            "operations": [
+                {
+                    "httpMethod": "POST",
+                    "nickname": "Create",
+                    "type": "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.CreateResponse",
+                    "items": {},
+                    "summary": "创建红包",
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "name": "amount",
+                            "description": "红包金额",
+                            "dataType": "int32",
+                            "type": "int32",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "body",
+                            "name": "count",
+                            "description": "红包个数",
+                            "dataType": "int32",
+                            "type": "int32",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "header",
+                            "name": "token",
+                            "description": "Authorization token",
+                            "dataType": "string",
+                            "type": "string",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "响应",
+                            "responseType": "object",
+                            "responseModel": "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.CreateResponse"
+                        },
+                        {
+                            "code": 401,
+                            "message": "token错误",
+                            "responseType": "object",
+                            "responseModel": "string"
+                        },
+                        {
+                            "code": 400,
+                            "message": "参数错误 101:余额不足",
+                            "responseType": "object",
+                            "responseModel": "string"
+                        },
+                        {
+                            "code": 500,
+                            "message": "服务器内部错误",
+                            "responseType": "object",
+                            "responseModel": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/rede/take",
+            "description": "抢红包",
+            "operations": [
+                {
+                    "httpMethod": "POST",
+                    "nickname": "Take",
+                    "type": "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.TakeResponse",
+                    "items": {},
+                    "summary": "抢红包",
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "name": "rede_id",
+                            "description": "红包id",
+                            "dataType": "int32",
+                            "type": "int32",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "body",
+                            "name": "secret_code",
+                            "description": "红包口令",
+                            "dataType": "string",
+                            "type": "string",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "header",
+                            "name": "token",
+                            "description": "Authorization token",
+                            "dataType": "string",
+                            "type": "string",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "响应",
+                            "responseType": "object",
+                            "responseModel": "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.TakeResponse"
+                        },
+                        {
+                            "code": 401,
+                            "message": "token错误",
+                            "responseType": "object",
+                            "responseModel": "string"
+                        },
+                        {
+                            "code": 400,
+                            "message": "参数错误 100:红包不存在或已过期|101:不可重复领取同一个红包|102:红包已被抢光|103:口令错误|200:系统繁忙",
+                            "responseType": "object",
+                            "responseModel": "string"
+                        },
+                        {
+                            "code": 500,
+                            "message": "服务器内部错误",
+                            "responseType": "object",
+                            "responseModel": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/rede/balance",
+            "description": "查询余额",
+            "operations": [
+                {
+                    "httpMethod": "GET",
+                    "nickname": "GetBalance",
+                    "type": "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.GetBalanceResponse",
+                    "items": {},
+                    "summary": "查询余额",
+                    "parameters": [
+                        {
+                            "paramType": "header",
+                            "name": "token",
+                            "description": "Authorization token",
+                            "dataType": "string",
+                            "type": "string",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "响应",
+                            "responseType": "object",
+                            "responseModel": "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.GetBalanceResponse"
+                        },
+                        {
+                            "code": 401,
+                            "message": "token错误",
+                            "responseType": "object",
+                            "responseModel": "string"
+                        },
+                        {
+                            "code": 500,
+                            "message": "服务器内部错误",
+                            "responseType": "object",
+                            "responseModel": "string"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/rede/record",
+            "description": "查询红包记录",
+            "operations": [
+                {
+                    "httpMethod": "GET",
+                    "nickname": "GetRecord",
+                    "type": "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.GetRecordResponse",
+                    "items": {},
+                    "summary": "查询红包记录",
+                    "parameters": [
+                        {
+                            "paramType": "header",
+                            "name": "token",
+                            "description": "Authorization token",
+                            "dataType": "string",
+                            "type": "string",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "响应",
+                            "responseType": "object",
+                            "responseModel": "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.GetRecordResponse"
+                        },
+                        {
+                            "code": 401,
+                            "message": "token错误",
+                            "responseType": "object",
+                            "responseModel": "string"
+                        },
+                        {
+                            "code": 500,
+                            "message": "服务器内部错误",
+                            "responseType": "object",
+                            "responseModel": "string"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "models": {
+        "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.CreateResponse": {
+            "id": "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.CreateResponse",
+            "properties": {
+                "amount": {
+                    "type": "int32",
+                    "description": "金额[精确到分的整数]",
+                    "items": {},
+                    "format": ""
+                },
+                "count": {
+                    "type": "int32",
+                    "description": "红包个数",
+                    "items": {},
+                    "format": ""
+                },
+                "id": {
+                    "type": "int32",
+                    "description": "红包id",
+                    "items": {},
+                    "format": ""
+                },
+                "secret_code": {
+                    "type": "string",
+                    "description": "红包口令",
+                    "items": {},
+                    "format": ""
+                }
+            }
+        },
+        "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.GetBalanceResponse": {
+            "id": "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.GetBalanceResponse",
+            "properties": {
+                "balance": {
+                    "type": "int32",
+                    "description": "余额",
+                    "items": {},
+                    "format": ""
+                }
+            }
+        },
+        "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.GetRecordResponse": {
+            "id": "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.GetRecordResponse",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "description": "红包记录集合",
+                    "items": {
+                        "$ref": "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.Record"
+                    },
+                    "format": ""
+                }
+            }
+        },
+        "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.Record": {
+            "id": "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.Record",
+            "properties": {
+                "amount": {
+                    "type": "int32",
+                    "description": "抢到红包金额(精确到分的整数)",
+                    "items": {},
+                    "format": ""
+                },
+                "rede_id": {
+                    "type": "int32",
+                    "description": "红包id",
+                    "items": {},
+                    "format": ""
+                },
+                "time": {
+                    "type": "int64",
+                    "description": "红包领取时间(毫秒时间戳)",
+                    "items": {},
+                    "format": ""
+                }
+            }
+        },
+        "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.TakeResponse": {
+            "id": "github.com.lufred.red_envelope.Service.api_service.model.redenvelope.TakeResponse",
+            "properties": {
+                "amount": {
+                    "type": "int32",
+                    "description": "抢到的金额数",
+                    "items": {},
+                    "format": ""
+                }
+            }
+        }
+    }
+}
